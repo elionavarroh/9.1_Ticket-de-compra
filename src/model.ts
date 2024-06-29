@@ -50,12 +50,20 @@ export const productos: LineaTicket[] = [
         },
         cantidad: 1,
         },
+        {
+        producto: {
+            nombre: "Paracetamol",
+            precio: 3,
+            tipoIva: "superreducidoB",
+        },
+        cantidad: 1,
+        },
     ];
 
 export  interface ResultadoLineaTicket {
         nombre: string;
         cantidad: number;
-        precionSinIva: number;
+        precioSinIva: number;
         tipoIva: TipoIva;
         precioConIva: number
     }
@@ -76,4 +84,16 @@ export  interface TicketFinal {
         total: ResultadoTotalTicket;
         desgloseIva: TotalPorTipoIva[];
     }
-  
+
+export type ivaTasasTipo = {
+    [key in TipoIva]: number;
+};
+
+export const ivaTasas: ivaTasasTipo = {
+    general: 0.21,
+    reducido: 0.10,
+    superreducidoA: 0.04,
+    superreducidoB: 0.07,
+    superreducidoC: 0.02,
+    sinIva: 0.0,
+};
